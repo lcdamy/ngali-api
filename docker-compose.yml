@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    image: lcdamy/ngali-api:1.0
+    ports:
+      - "8001:8001"
+    
+
+  frontend:
+    image: lcdamy/ngali-frontend:1.0
+    ports:
+      - "3000:5173"
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_password
+      - MYSQL_DATABASE=your_database
+    ports:
+      - "3307:3306"
