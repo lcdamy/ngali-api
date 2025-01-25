@@ -28,19 +28,16 @@ pipeline {
             }
         }
 
-        stage('Login'){
+
+        stage('Push'){
 
             steps {
-                bat 'echo $DOCKERHUB_CREDENTIALS_PWS docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            withCredentials([usernamePassword(credentialsId:'dockerhub',passwordVariable:'DOCKERHUB_PASSWORD',usernameVariable:'DOCKERHUB_USERNAME')]){
+                sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD' 
+                sh 'docker push lcdamy/ngali-api:1.2'
+            }
             }
         }
-
-        // stage('Push'){
-
-        //     steps {
-        //         bat 'docker push lcdamy/ngali-api:1.2'
-        //     }
-        // }
 
     }
 
