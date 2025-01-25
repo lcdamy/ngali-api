@@ -14,24 +14,30 @@ pipeline {
             }
         }
 
+        stage ('Test'){
+            steps {
+                bat 'npm test'
+            }
+        }
+
         stage('Build') {
 
             steps {
-                sh 'docker build -t lcdamy/ngali-api:1.2 .'
+                bat 'docker build -t lcdamy/ngali-api:1.2 .'
             }
         }
 
         stage('Login'){
 
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PWS docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                bat 'echo $DOCKERHUB_CREDENTIALS_PWS docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
 
         stage('Push'){
 
             steps {
-                sh 'docker push lcdamy/ngali-api:1.2'
+                bat 'docker push lcdamy/ngali-api:1.2'
             }
         }
 
