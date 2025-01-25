@@ -9,15 +9,13 @@ pipeline {
     stages {
 
         stage('checkout') {
-
             steps {
                 checkout scm
             }
         }
 
         stage ('Test'){
-            steps{
-                sh 'sudo apt install npm'
+            steps {
                 sh 'npm test'
             }
         }
