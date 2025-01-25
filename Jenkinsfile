@@ -35,12 +35,12 @@ pipeline {
             }
         }
 
-        stage('Push'){
+        // stage('Push'){
 
-            steps {
-                bat 'docker push lcdamy/ngali-api:1.2'
-            }
-        }
+        //     steps {
+        //         bat 'docker push lcdamy/ngali-api:1.2'
+        //     }
+        // }
 
     }
 
