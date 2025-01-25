@@ -33,8 +33,8 @@ pipeline {
 
             steps {
             withCredentials([usernamePassword(credentialsId:'dockerhub',passwordVariable:'DOCKERHUB_PASSWORD',usernameVariable:'DOCKERHUB_USERNAME')]){
-                sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD' 
-                sh 'docker push lcdamy/ngali-api:1.2'
+                bat 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD' 
+                bat 'docker push lcdamy/ngali-api:1.2'
             }
             }
         }
