@@ -40,7 +40,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId:'dockerhub',passwordVariable:'DOCKERHUB_CREDENTIALS_PWS',usernameVariable:'DOCKERHUB_CREDENTIALS_USR')]){
                     bat 'echo $DOCKERHUB_CREDENTIALS_PWS docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin' 
-                    bat 'docker tag ngali-api:1.2 lcdamy/ngali-api:1.2'
+                    bat 'docker tag ngali-api:1.1 lcdamy/ngali-api:1.2'
                     bat 'docker push lcdamy/ngali-api:1.2'
                     bat 'docker logout'
                 }
